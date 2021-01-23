@@ -1,10 +1,8 @@
 import { Dispatch } from "redux";
+import { PAGINATION_LIMIT, REACT_APP_API_URL } from "../../utils/Env";
 import { PokemonList } from "../interfaces/Pokemon";
 import { AppState } from "../store";
 import { AppActions, SetPageNumber, SetPokemonListData, SetTypeFilter } from "../types/PokemonTypes";
-
-const PAGINATION_LIMIT = 10
-const REACT_APP_API_URL = 'https://pokeapi.co/api/v2'
 
 export const setPokemonListData = (
   pokemonList: PokemonList
@@ -23,7 +21,7 @@ export const setTypeFilter = (typeFilter: string | null): SetTypeFilter => ({
   typeFilter
 });
 
-export const fetchPokemonList = (pageNumber: number = 1) => (
+export const fetchPokemonList = (pageNumber: number = 0) => (
   dispatch: Dispatch<AppActions>,
   getState: () => AppState
 ) => {
@@ -48,3 +46,27 @@ export const fetchPokemonList = (pageNumber: number = 1) => (
       console.warn(err);
     });
 };
+
+// export const fetchPokemonListType = (type: string = '') => (
+//   dispatch: Dispatch<AppActions>,
+//   getState: () => AppState
+// ) => {
+//   dispatch(setTypeFilter(type));
+
+//   fetch(`${REACT_APP_API_URL}/type/${type}`, {
+//     method: "GET"
+//   })
+//     .then(res => {
+//       if (res.status === 200) {
+//         return res.json();
+//       } else {
+//         throw new Error("HTTP Status " + res.status + ", " + res.statusText);
+//       }
+//     })
+//     .then((res: PokemonType) => {
+//       dispatch(setPokemonListData(res));
+//     })
+//     .catch(err => {
+//       console.warn(err);
+//     });
+// };
