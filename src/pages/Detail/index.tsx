@@ -1,9 +1,16 @@
 import React, { FC } from 'react'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
 
-const Detail: FC = () => {
+type DetailParams = {
+  name: string
+}
+type DetailProps = RouteComponentProps<DetailParams>
+const Detail: FC<DetailProps> = ({ match }) => {
   return (
-    <h1>Detail</h1>
+    <>
+      <h1>{match.params.name}</h1>
+    </>
   )
 }
 
-export default Detail
+export default withRouter(Detail)

@@ -7,7 +7,7 @@ const Routes: FC = () => {
   return (
     <>
       <Route exact path="/" component={Home} />
-      <Route exact path="/:id" component={Detail} />
+      <Route exact path="/:name" component={Detail} />
     </>
   );
 }

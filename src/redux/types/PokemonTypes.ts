@@ -1,14 +1,24 @@
-import { Pokemon } from '../interfaces/Pokemon';
+import { PokemonList } from "../interfaces/Pokemon";
 
-export const GET_POKEMON = 'GET_POKEMON'
-
-export interface GetPokemonsStateType {
-  pokemons: Pokemon[]
+export interface SetPokemonListData {
+  type: "SET_POKEMON_LIST_DATA";
+  pokemonList: PokemonList;
 }
 
-interface GetPokemonsActionType {
-  type: typeof GET_POKEMON
-  payload: Pokemon[]
+export interface SetPageNumber {
+  type: "SET_PAGE_NUMBER";
+  pageNumber: number;
 }
 
-export type PokemonActionTypes = GetPokemonsActionType
+export interface SetTypeFilter {
+  type: "SET_TYPE_FILTER";
+  typeFilter: string | null;
+}
+
+export type PokemonListActionTypes =
+  | SetPokemonListData
+  | SetPageNumber
+  | SetTypeFilter;
+
+
+export type AppActions = PokemonListActionTypes
