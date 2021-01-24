@@ -69,7 +69,7 @@ const Detail: FC<DetailProps> = ({ match }) => {
                   <div className="stats__progressbar">
                     <div className="progressbar">
                       <span className={`bar ${colorBarClasses}`} 
-                        style={{ width: `${v.base_stat}%` }}>
+                        style={{ width: `${(v.base_stat / 252) * 100}%` }}>
                         {v.base_stat}%
                       </span>
                     </div>

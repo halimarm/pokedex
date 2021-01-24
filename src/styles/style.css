@@ -71,10 +71,6 @@ a {
   font-weight: bold;
 }
 
-.header {
-  text-align: center;
-}
-
 .header-detail {
   height: 250px;
   background: #F2CB55;
@@ -207,15 +203,18 @@ a {
   display: flex;
   padding: 8px 0;
 }
+
 .stats__label {
   width: 30%;
   margin-right: auto;
   text-transform: capitalize;
   color: initial;
 }
+
 .stats__progressbar {
   width: 70%;
 }
+
 .progressbar {
   position: relative;
   background: #f1f1f1;
@@ -226,6 +225,7 @@ a {
   text-align: right;
   min-height: 16px;
 }
+
 .bar {
   height: 100%;
   display: block;
