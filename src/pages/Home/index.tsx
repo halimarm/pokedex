@@ -6,6 +6,8 @@ import { AppState } from '../../redux/store';
 import Filtered from '../../components/Filtered';
 import Search from '../../components/Search';
 import Logo from '../../assets/logo-pokemon.png'
+import Card from '../../components/Card';
+import { getIdByUrl } from '../../utils/Utils';
 
 const Home: FC = () => {
   const dispatch = useDispatch();
@@ -17,20 +19,13 @@ const Home: FC = () => {
 
   const renderPokemon = () => {
     const result = data.data.results.map((v, i) => {
-      const id = i + 1
       return (
-        <div className="list__item list__item--2">
-          <Link key={i} to={`/pokemon/${v.name}`}>
-            <div className="card">
-              <div className="card__body">
-                <div className="col">
-                  <h1 className="card__title">{v.name}</h1>
-                </div>
-                <div className="col">
-                  <img className="card__img" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt={v.name} />
-                </div>
-              </div>
-            </div>
+        <div key={i} className="list__item list__item--2">
+          <Link to={`/pokemon/${v.name}`}>
+            <Card
+              id={getIdByUrl(v.url)}
+              name={v.name}
+            />
           </Link>
         </div>
       )

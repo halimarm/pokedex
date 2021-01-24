@@ -23,8 +23,16 @@ a {
   padding: 16px;
 }
 
-.navbar {
+.navbar--absolute {
   position: absolute;
+}
+.navbar--default {
+  position: static;
+  background: #2E68B3;
+  position: static;
+  background: #e0e0e0;
+  margin: -16px -16px 0 -16px;
+  padding: 12px 8px;
 }
 
 .navbar-brand {
@@ -84,6 +92,7 @@ a {
 .card__title {
   color: #fff;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .card__subtitle {

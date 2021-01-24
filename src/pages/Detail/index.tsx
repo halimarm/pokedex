@@ -1,9 +1,10 @@
 import React, { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
+import Navbar from '../../components/Navbar'
 import { fetchPokemonInfo } from '../../redux/actions/PokemonActions'
 import { AppState } from '../../redux/store'
-import IconLeft from '../../assets/icons/IconLeft.svg'
+import { replaceToString } from '../../utils/Utils'
 
 type DetailParams = {
   name: string
@@ -22,12 +23,7 @@ const Detail: FC<DetailProps> = ({ match }) => {
   if (!data.data.types) return <p>Loading...</p>
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="navbar-brand">
-          <img src={IconLeft} alt="Back"/>
-        </Link>
-        <div className="navbar-menu"></div>
-      </nav>
+      <Navbar position="absolute" />
       <header className="header-detail">
         <div className="header-detail__block">
           <div className="header-detail__figure">
@@ -63,7 +59,7 @@ const Detail: FC<DetailProps> = ({ match }) => {
               return (
                 <>
                   <div className="stats__list">
-                    <label className="stats__label">{v.stat.name.replace('-', ' ')}</label>
+                    <label className="stats__label">{replaceToString(v.stat.name)}</label>
                     <div className="stats__progressbar">
                       <div className="progressbar">
                         <span className={`bar ${colorBarClasses}`} 

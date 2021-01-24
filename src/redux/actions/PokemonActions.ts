@@ -2,8 +2,16 @@ import { Dispatch } from "redux";
 import { PAGINATION_LIMIT, REACT_APP_API_URL } from "../../utils/Env";
 import { PokemonList } from "../interfaces/Pokemon";
 import { PokemonInfo } from "../interfaces/PokemonInfo";
+import { PokemonType } from "../interfaces/PokemonType";
 import { AppState } from "../store";
-import { AppActions, SetPageNumber, SetPokemonListData, SetPokemonInfoData, SetTypeFilter } from "../types/PokemonTypes";
+import {
+  AppActions,
+  SetPageNumber,
+  SetPokemonListData,
+  SetPokemonInfoData,
+  SetPokemonTypeData,
+  SetTypeFilter
+} from "../types/PokemonTypes";
 
 export const setPokemonListData = (
   pokemonList: PokemonList
@@ -17,6 +25,13 @@ export const setPokemonInfoData = (
 ): SetPokemonInfoData => ({
   type: "SET_POKEMON_INFO_DATA",
   pokemonInfo
+})
+
+export const setPokemonTypeData = (
+  pokemonType: PokemonType
+): SetPokemonTypeData => ({
+  type: "SET_POKEMON_TYPE_DATA",
+  pokemonType
 })
 
 export const setPageNumber = (pageNumber: number): SetPageNumber => ({
@@ -64,3 +79,20 @@ export const fetchPokemonInfo = (name: string) => (
       console.warn(err);
     });
 };
+
+export const fetchPokemonType = (type: string) => (
+  dispatch: Dispatch<AppActions>,
+  getState: () => AppState
+) => {
+  fetch(`${REACT_APP_API_URL}/type/${type}`, {
+    method: "GET"
+  })
+    .then(res => res.json())
+    .then((res: PokemonType) => {
+      dispatch(setPokemonTypeData(res));
+    })
+    .catch(err => {
+      console.warn(err);
+    });
+};
+
