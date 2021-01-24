@@ -3,6 +3,7 @@ import { PAGINATION_LIMIT, REACT_APP_API_URL } from "../../utils/Env";
 import { PokemonList } from "../interfaces/Pokemon";
 import { PokemonInfo } from "../interfaces/PokemonInfo";
 import { PokemonType } from "../interfaces/PokemonType";
+import { PokemonCompare } from "../interfaces/PokemonCompare";
 import { AppState } from "../store";
 import {
   AppActions,
@@ -10,6 +11,7 @@ import {
   SetPokemonListData,
   SetPokemonInfoData,
   SetPokemonTypeData,
+  SetPokemonCompareData,
   SetTypeFilter
 } from "../types/PokemonTypes";
 
@@ -32,6 +34,13 @@ export const setPokemonTypeData = (
 ): SetPokemonTypeData => ({
   type: "SET_POKEMON_TYPE_DATA",
   pokemonType
+})
+
+export const setPokemonCompareData = (
+  pokemonCompare: PokemonCompare
+): SetPokemonCompareData => ({
+  type: "SET_POKEMON_COMPARE_DATA",
+  pokemonCompare
 })
 
 export const setPageNumber = (pageNumber: number): SetPageNumber => ({
@@ -94,5 +103,12 @@ export const fetchPokemonType = (type: string) => (
     .catch(err => {
       console.warn(err);
     });
+};
+
+export const comparePokemon = (data: any) => (
+  dispatch: Dispatch<AppActions>,
+  getState: () => AppState
+) => {
+  dispatch(setPokemonCompareData(data));
 };
 

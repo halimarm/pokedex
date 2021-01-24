@@ -15,6 +15,7 @@ a {
 }
 
 .App {
+  position: relative;
   background: #fff;
   width: 425px;
   min-height: 100vh;
@@ -23,22 +24,50 @@ a {
   padding: 16px;
 }
 
+.navbar {
+  display: flex;
+  width: 100%;
+  left: 0;
+  padding: 0 8px;
+  align-items: center;
+}
+
 .navbar--absolute {
   position: absolute;
 }
-.navbar--default {
+
+.navbar--static {
   position: static;
   background: #2E68B3;
   position: static;
   background: #e0e0e0;
   margin: -16px -16px 0 -16px;
   padding: 12px 8px;
+  width: auto !important;
+}
+
+.navbar--default {
+  position: absolute;
+}
+
+.navbar--static .navbar-menu,
+.navbar--default .navbar-menu {
+  color: #333;
+}
+.navbar--default .navbar-menu {
+  padding: 24px 8px;
 }
 
 .navbar-brand {
   text-decoration: none;
   color: #000;
   text-transform: uppercase;
+}
+
+.navbar-menu {
+  color: #fff;
+  margin-left: auto;
+  font-weight: bold;
 }
 
 .header {
@@ -151,14 +180,14 @@ a {
   outline: 0;
 }
 
-/* .btn {
+.btn {
   display: inline-block;
   width: 100%;
   padding: 12px;
   border: 0;
   box-shadow: none;
   border-radius: 8px;
-} */
+}
 
 .label {
   display: inline-block;

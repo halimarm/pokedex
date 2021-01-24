@@ -8,6 +8,7 @@ import Search from '../../components/Search';
 import Logo from '../../assets/logo-pokemon.png'
 import Card from '../../components/Card';
 import { getIdByUrl } from '../../utils/Utils';
+import Navbar from '../../components/Navbar';
 
 const Home: FC = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Home: FC = () => {
 
   return (
     <>
+      <Navbar />
       <header className="header">
         <img className="logo" src={Logo} alt="Pokedex"/>
         <Search />

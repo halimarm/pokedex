@@ -41,11 +41,10 @@ const Type: FC<TypeProps> = ({ match }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar position="static" />
       <section>
         <h1 className="section__title">Type : {name}</h1>
         <div className="list">
-          {console.log(data.data)}
           { renderPokemon() }
         </div>
       </section>
