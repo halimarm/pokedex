@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { fetchPokemonList } from '../../redux/actions/PokemonActions';
 import { AppState } from '../../redux/store';
 import Filtered from '../../components/Filtered';
-import Search from '../../components/Search';
 import Logo from '../../assets/logo-pokemon.png'
 import Card from '../../components/Card';
 import { getIdByUrl } from '../../utils/Utils';
@@ -41,7 +40,6 @@ const Home: FC = () => {
       <Navbar />
       <header className="header">
         <img className="logo" src={Logo} alt="Pokedex"/>
-        <Search />
       </header>
       <section>
         <h1 className="section__title">Browse Type</h1>

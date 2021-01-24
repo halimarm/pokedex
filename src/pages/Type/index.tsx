@@ -18,6 +18,7 @@ const Type: FC<TypeProps> = ({ match }) => {
 
   useEffect(() => {
     dispatch(fetchPokemonType(name));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const renderPokemon = () => {
@@ -35,7 +36,6 @@ const Type: FC<TypeProps> = ({ match }) => {
     })
     return result
   }
-
   
   if (!data.data.pokemon) return <p>Loading...</p>
 

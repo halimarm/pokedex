@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import IconLeft from '../assets/icons/IconLeft.svg'
 import { AppState } from '../redux/store';
 
@@ -9,6 +9,7 @@ type NavbarParams = {
 }
 type NavbarProps = NavbarParams;
 const Navbar: FC<NavbarProps> = ({ position }) => {
+  const history = useHistory()
   const state = useSelector((state: AppState) => state.pokemonCompare);
   let classes;
   if (position === 'absolute') {
@@ -21,9 +22,13 @@ const Navbar: FC<NavbarProps> = ({ position }) => {
   return (
     <>
       <nav className={`navbar ${classes}`}>
-        <Link to="/" className="navbar-brand">
-          {position && <img src={IconLeft} alt="Back"/>}
-        </Link>
+        {
+          position && <button onClick={() => history.goBack()}
+            className="navbar-brand"
+            style={{ background: 'transparent', border: 0 }}>
+            <img src={IconLeft} alt="Back"/>
+          </button>
+        }
         <Link to="/compare" className="navbar-menu">
           {state.data.length} Compare
         </Link>
