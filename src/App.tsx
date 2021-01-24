@@ -5,7 +5,9 @@ import Routes from './routes';
 const App: FC = () => {
   return (
     <Router>
-      <Routes />
+      <div className="App">
+        <Routes />
+      </div>
     </Router>
   );
 }

@@ -12,7 +12,6 @@ export const setPokemonListData = (
   pokemonList
 });
 
-
 export const setPokemonInfoData = (
   pokemonInfo: PokemonInfo
 ): SetPokemonInfoData => ({
@@ -41,13 +40,7 @@ export const fetchPokemonList = (pageNumber: number = 0) => (
   fetch(`${REACT_APP_API_URL}/pokemon?offset=${offset}&limit=${PAGINATION_LIMIT}`, {
     method: "GET"
   })
-    .then(res => {
-      if (res.status === 200) {
-        return res.json();
-      } else {
-        throw new Error("HTTP Status " + res.status + ", " + res.statusText);
-      }
-    })
+    .then(res => res.json())
     .then((res: PokemonList) => {
       dispatch(setPokemonListData(res));
     })
@@ -63,13 +56,7 @@ export const fetchPokemonInfo = (name: string) => (
   fetch(`${REACT_APP_API_URL}/pokemon/${name}`, {
     method: "GET"
   })
-    .then(res => {
-      if (res.status === 200) {
-        return res.json();
-      } else {
-        throw new Error("HTTP Status " + res.status + ", " + res.statusText);
-      }
-    })
+    .then(res => res.json())
     .then((res: PokemonInfo) => {
       dispatch(setPokemonInfoData(res));
     })
@@ -77,27 +64,3 @@ export const fetchPokemonInfo = (name: string) => (
       console.warn(err);
     });
 };
-
-// export const fetchPokemonListType = (type: string = '') => (
-//   dispatch: Dispatch<AppActions>,
-//   getState: () => AppState
-// ) => {
-//   dispatch(setTypeFilter(type));
-
-//   fetch(`${REACT_APP_API_URL}/type/${type}`, {
-//     method: "GET"
-//   })
-//     .then(res => {
-//       if (res.status === 200) {
-//         return res.json();
-//       } else {
-//         throw new Error("HTTP Status " + res.status + ", " + res.statusText);
-//       }
-//     })
-//     .then((res: PokemonType) => {
-//       dispatch(setPokemonListData(res));
-//     })
-//     .catch(err => {
-//       console.warn(err);
-//     });
-// };
